@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">Vorher Nachher</title>
+  <desc id="desc">Arbeitsdokumentation für Handwerker</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0f15"/><stop offset=".55" stop-color="#111923"/><stop offset="1" stop-color="#0d1519"/></linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#aed7ff"/><stop offset="1" stop-color="#69e6c2"/></linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18"/></filter>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#8ca0b5" stroke-opacity=".07"/></pattern>
+  </defs>
+  <rect width="1200" height="430" rx="28" fill="url(#bg)"/><rect width="1200" height="430" rx="28" fill="url(#grid)"/>
+  <circle cx="180" cy="80" r="130" fill="#aed7ff" opacity=".08" filter="url(#glow)"/><circle cx="1030" cy="350" r="150" fill="#69e6c2" opacity=".10" filter="url(#glow)"/>
+  <rect x="78" y="72" width="1044" height="286" rx="24" fill="#111820" stroke="#293745"/><rect x="78" y="72" width="8" height="143" rx="4" fill="#aed7ff"/><rect x="78" y="215" width="8" height="143" rx="4" fill="#69e6c2"/>
+  <g transform="translate(126 116)"><rect width="64" height="64" rx="18" fill="#1f2a36" stroke="#3e5266"/><path d="M16 23h9l4-5h9l4 5h7a5 5 0 0 1 5 5v18a5 5 0 0 1-5 5H16a5 5 0 0 1-5-5V28a5 5 0 0 1 5-5Z" fill="none" stroke="url(#line)" stroke-width="3"/><circle cx="32.5" cy="36.5" r="8" fill="none" stroke="url(#line)" stroke-width="3"/></g>
+  <text x="216" y="141" fill="#8fa0b2" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="5">ARBEITSDOKUMENTATION</text>
+  <text x="216" y="205" fill="#f4f7fa" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800">VORHER</text><text x="494" y="205" fill="#607080" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="300">/</text><text x="535" y="205" fill="#69e6c2" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800">NACHHER</text>
+  <rect x="216" y="226" width="742" height="4" rx="2" fill="url(#line)"/><text x="216" y="274" fill="#d1dae3" font-family="Arial, Helvetica, sans-serif" font-size="24">Fotos. Arbeitszeit. Notizen. PDF.</text><text x="216" y="310" fill="#8fa0b2" font-family="Arial, Helvetica, sans-serif" font-size="18">Einfach dokumentieren, was wirklich gemacht wurde.</text>
+  <g transform="translate(976 126)"><rect width="88" height="142" rx="18" fill="#0b1117" stroke="#425262" stroke-width="2"/><rect x="9" y="18" width="70" height="51" rx="10" fill="#20303f"/><path d="M23 52l15-14 10 9 9-8 13 13" fill="none" stroke="#aed7ff" stroke-width="3" stroke-linecap="round"/><rect x="9" y="78" width="70" height="51" rx="10" fill="#18332e"/><path d="m26 103 10 10 25-28" fill="none" stroke="#69e6c2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>
