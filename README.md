@@ -42,7 +42,7 @@ Aufträge, Texte, Arbeitsstunden und Fotos werden in der aktuellen Version aussc
 
 Die Android-App wird als Trusted Web Activity gebaut. Sie startet Vorher Nachher als eigenständige Vollbild-App und verwendet denselben Web-Ursprung wie die installierte Chrome-Version. Der automatisierte GitHub-Workflow baut eine signierte Release-APK, prüft deren Signatur und veröffentlicht sie im GitHub-Release.
 
-Die fertige APK heißt Vorher-Nachher-v1.0.0.apk.
+Die fertige APK heißt Vorher-Nachher-v1.0.1.apk.
 
 ## Einschränkungen des MVP
 
