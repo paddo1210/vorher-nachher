@@ -1,0 +1,75 @@
+name: Build signed Android APK
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Extract complete source
+        run: unzip -q vorher-nachher-source-v1.0.0.zip -d source
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10.2"
+
+      - name: Restore signing key
+        shell: bash
+        run: |
+          printf '%s' "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > "$RUNNER_TEMP/vorher-nachher-release.jks"
+
+      - name: Build signed release APK
+        working-directory: source/android
+        env:
+          ANDROID_KEYSTORE_FILE: ${{ runner.temp }}/vorher-nachher-release.jks
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: vorher-nachher
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: gradle --no-daemon clean assembleRelease
+
+      - name: Verify APK signature and package
+        shell: bash
+        run: |
+          APK="source/android/app/build/outputs/apk/release/app-release.apk"
+          apksigner verify --verbose --print-certs "$APK"
+          cp "$APK" "Vorher-Nachher-v1.0.0.apk"
+          sha256sum "Vorher-Nachher-v1.0.0.apk" > "Vorher-Nachher-v1.0.0.apk.sha256"
+
+      - name: Upload tested APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Vorher-Nachher-v1.0.0
+          path: |
+            Vorher-Nachher-v1.0.0.apk
+            Vorher-Nachher-v1.0.0.apk.sha256
+          if-no-files-found: error
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          name: Vorher Nachher v1.0.0
+          body: Signierte Android-APK mit Kalender, Arbeitsnachweis und PDF-Export.
+          files: |
+            Vorher-Nachher-v1.0.0.apk
+            Vorher-Nachher-v1.0.0.apk.sha256
+            vorher-nachher-source-v1.0.0.zip
+            vorher-nachher-source-v1.0.0.zip.sha256
