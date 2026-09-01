@@ -12,19 +12,22 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Extract complete source
-        run: unzip -q vorher-nachher-source-v1.0.0.zip -d source
+        run: unzip -q vorher-nachher-source-v1.0.0-fixed.zip -d source
 
       - name: Set up Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+
+      - name: Install Android API 36
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -71,5 +74,5 @@ jobs:
           files: |
             Vorher-Nachher-v1.0.0.apk
             Vorher-Nachher-v1.0.0.apk.sha256
-            vorher-nachher-source-v1.0.0.zip
-            vorher-nachher-source-v1.0.0.zip.sha256
+            vorher-nachher-source-v1.0.0-fixed.zip
+            vorher-nachher-source-v1.0.0-fixed.zip.sha256
