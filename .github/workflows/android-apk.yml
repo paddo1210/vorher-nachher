@@ -52,7 +52,7 @@ jobs:
         shell: bash
         run: |
           APK="source/android/app/build/outputs/apk/release/app-release.apk"
-          apksigner verify --verbose --print-certs "$APK"
+          "$ANDROID_SDK_ROOT/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$APK"
           cp "$APK" "Vorher-Nachher-v1.0.0.apk"
           sha256sum "Vorher-Nachher-v1.0.0.apk" > "Vorher-Nachher-v1.0.0.apk.sha256"
 
