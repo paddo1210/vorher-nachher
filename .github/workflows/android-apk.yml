@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Extract complete source
-        run: unzip -q vorher-nachher-source-v1.0.0-fixed.zip -d source
+        run: unzip -q vorher-nachher-source-v1.0.0-final.zip -d source
 
       - name: Set up Java
         uses: actions/setup-java@v5
@@ -74,5 +74,5 @@ jobs:
           files: |
             Vorher-Nachher-v1.0.0.apk
             Vorher-Nachher-v1.0.0.apk.sha256
-            vorher-nachher-source-v1.0.0-fixed.zip
-            vorher-nachher-source-v1.0.0-fixed.zip.sha256
+            vorher-nachher-source-v1.0.0-final.zip
+            vorher-nachher-source-v1.0.0-final.zip.sha256
